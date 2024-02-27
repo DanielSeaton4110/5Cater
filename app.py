@@ -15,9 +15,10 @@ app.debug=False
 # Custom filter
 app.jinja_env.filters["usd"] = usd
 app.jinja_env.globals["debug"] = True
-# Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
+# Configure Flask session to use a temporary directory
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = '/tmp/flask_session'  # Specify the temporary directory
+app.config['SESSION_PERMANENT'] = False
 Session(app)
 
 @app.errorhandler(500)
