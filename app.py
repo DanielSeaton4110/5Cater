@@ -11,10 +11,7 @@ from flask_session import Session
 # Configure application
 app = Flask(__name__)
 app.debug=False
-# Configure a log file for errors
-handler = logging.FileHandler('error.log')
-handler.setLevel(logging.ERROR)
-app.logger.addHandler(handler)
+
 # Custom filter
 app.jinja_env.filters["usd"] = usd
 app.jinja_env.globals["debug"] = True
