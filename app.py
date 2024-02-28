@@ -21,6 +21,10 @@ app.config['SESSION_FILE_DIR'] = '/tmp/flask_session'  # Specify the temporary d
 app.config['SESSION_PERMANENT'] = False
 Session(app)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(app.root_path, 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 @app.errorhandler(500)
 def internal_server_error(error):
     # Log the error details to a file
