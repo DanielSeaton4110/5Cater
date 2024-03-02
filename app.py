@@ -1,6 +1,5 @@
 import logging
 import traceback
-import awsgi
 from datetime import datetime
 from flask import Flask, redirect, render_template, send_file, session, request
 from docx import Document
@@ -46,9 +45,6 @@ def after_request(response):
 def index():
     """Return Index information"""
     return render_template("index.html")
-    
-def lambda_handler(event, context):
-    return awsgi.response(app, event, context, base64_content_types={"image/ping"})
 
 @app.route("/cateringchoices", methods=["GET", "POST"])
 def catering_choices():
